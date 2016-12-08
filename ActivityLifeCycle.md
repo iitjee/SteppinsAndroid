@@ -7,7 +7,7 @@ There is a sequence of callback methods that - start up an activity and - that t
 ![alt text](https://developer.android.com/images/training/basics/basic-lifecycle.png "basic-lifecycle")
 
 only three of these states can be static. (i.e The activity can exist in one of only three states for an extended period of time)<br/><br/>
-__Resumed__: activity is in the foreground and the user can interact with it. (Aka "running" state.) <br/>
+__Resumed__: activity is in the foreground adn is present on top of the backstack and the user can interact with it. (Aka "running" state.) <br/>
 __Paused__: activity is partially obscured by another activity—the other activity that's in the foreground is semi-transparent or doesn't cover the entire screen. The paused activity does not receive user input and cannot execute any code. <br/>
 __Stopped__: activity is completely hidden and not visible to the user; it is considered to be in the background. While stopped, the activity instance and all its state information such as member variables is retained, but it cannot execute any code. <br/>
 
