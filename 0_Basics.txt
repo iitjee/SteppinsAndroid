@@ -1,0 +1,85 @@
+/*
+select a hard-coded string and go to refactor menu->extract->string to make it a variable string
+
+*/
+Creating a Button:
+Button button = new Button(this) //this is the context in which button is created
+button.setText = "Click Me";
+button.setLayoutParams(aprams); //params is an instance of ViewGroup.LayoutParams
+myLaouyt.addView(button);
+
+Creating a EditText object
+EditText egt = (EditTexzt)findViewById(R.id.nameText);
+String entry = et.getText().toString(); //Note that et.getText() returns sth called an editableObject (IMP)
+//even for StringBuilder Objects, you have to do .toString() to convert it into string boject
+
+It's better to embed a TextView which is very long in a scrollView container
+
+To convert a hard-coded string into a resource string:
+just put the cursor in the string and click opt+return.
+You get an intention action menu -> Extract String resource
+
+See all errors and warnings in "Problems" view
+
+To see list of all dependencies, 
+1. Go to Android View -> BuildGradle(Module) or
+2. Cmd; and click app@bot-left and click dependencies tab
+
+To add libraries:
+Click + in project structure(Cmd;) and simple add any "Library dependency" you want
+
+There are two built-in xml files: content-main.xml and activity_main.xml
+activity_main is like a container which has the following code
+    <include layout="@layout/content_main" />
+You can replace content_main with any other layout file as well
+
+
+Colors:
+materialpalette.com
+
+You can change the colors in colors folder in res.
+You can change the colors of action bars etc. in Design Storyboard where there is a small icon on top of phone(NoActionBar)
+
+
+Every widget has layoutParams field:
+myButton.getLayoutParams().height = 100;
+
+VuewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGROUP.LayoutParams.WRAP_CONTENT);
+
+To convert pixels to dp:
+float pixels = TypedValue.applyDiemsion(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
+getResources().getDisplayMetrics() gives screen density and resolution.
+
+
+ViewGroups or Containers:
+android:orientation = "horizontal"
+android:gravity:"center_horizontal"
+
+
+You only need to add ids in xml files for those widgets you want to get a reference in the java code.
+
+Each element that you add to an XMLLayout file such as relative layout or TextView is an instane of a Java class. Eg; TextView
+is actually an instance of android.widget.TextView
+
+onCreate(Bundle savedInstanceState) //main method which we do all the work
+onCreateOptionsMenu(Menu menu)  //displays list of optins @tp-right (default is settings)
+onOptionsItemSelected(MenuItem item) //handles when you click an optin in above menu
+
+
+
+Toast.makeText(...context..., ...message..., ... a predefined label for duration...) //context can be 'view'
+Snackbar.make(...context..., ...message..., ... a predefined label for duration...) //context can be a reference of CoordinatorLayout
+
+
+
+If either the MAIN action or LAUNCHER category are not declared for anyone of your activities in AndriodManifest.xml, then your app icon will not appear in the Home screen's list of apps.
+
+Debugging:
+Log.d("Main Activity", "I'm in onCreate method"); //className, your message
+Log.d(getClass().getSimpleName(), "onCreate"); //gives the current Class name dynamically
+//You need to comment out the Log methods when shipped
+Log.e for error
+Log.i for info 
+
+
+
