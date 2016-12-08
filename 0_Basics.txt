@@ -1,12 +1,28 @@
 /*
 select a hard-coded string and go to refactor menu->extract->string to make it a variable string
 
+Changing an ID in xml file: place cursor in id value of the element in xml file adn press shift+F6 to refactor (IMP)
+
+Hit Cmd+7 to see "strucutre" of a file: Damn IMP
+
+
 */
 Creating a Button:
 Button button = new Button(this) //this is the context in which button is created
 button.setText = "Click Me";
 button.setLayoutParams(aprams); //params is an instance of ViewGroup.LayoutParams
 myLaouyt.addView(button);
+
+Adding an event to a button:(Two ways: one via xml and other via Activity file) (IMP)
+android:onClick= "myButtonClickEventHandlerMethod"
+press opt+return -> and create a method in the mainActivity class
+(or)
+button.setOnClickListener(new View.OnClickListener() {  //Anonymous Class (similar to inline block)
+    @Override
+    public void onClick(View v) {
+    ...Hre you get the reference to the view object that dispatched the event.
+    }
+   });
 
 Creating a EditText object
 EditText egt = (EditTexzt)findViewById(R.id.nameText);
@@ -80,6 +96,13 @@ Log.d(getClass().getSimpleName(), "onCreate"); //gives the current Class name dy
 //You need to comment out the Log methods when shipped
 Log.e for error
 Log.i for info 
+
+Handling changes in Screen Orientation:
+These are automatically handled by the application framework. It simply destructs the entire activity and reconstructs
+everything from scratch when rotated. You can observe this by debugging the lifecycle methods. To customize it:
+1)Register the activiy for configuration changes in appmanifest file
+2) Handle using onConfigurationChanged method
+
 
 
 
