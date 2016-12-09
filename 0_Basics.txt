@@ -5,7 +5,10 @@ Changing an ID in xml file: place cursor in id value of the element in xml file 
 
 Hit Cmd+7 to see "strucutre" of a file: Damn IMP
 
+You can see preview in emulator usign preview tab @right-middle
 
+console.log == Log.v()
+eg: Log.v("MyActivity", "Index: " + index + "Value: " + words[index]);
 */
 Creating a Button:
 Button button = new Button(this) //this is the context in which button is created
@@ -23,13 +26,31 @@ button.setOnClickListener(new View.OnClickListener() {  //Anonymous Class (simil
     ...Hre you get the reference to the view object that dispatched the event.
     }
    });
+Notes:There are a couple reasons why you might want to programmatically set an OnClickListener. The first is if you ever want to change the behavior of your button while your app is running. You can point your button at another method entirely, or just disable the button by setting an OnClickListener that doesn't do anything.
+When you define a listener using the onClick attribute, the view looks for a method with that name only in its host activity. Programmatically setting an OnClickListener allows you to control a button's behavior from somewhere other than its host activity. This will become very relevant when we learn about Fragments. Fragments always need to use OnClickListeners to control their buttons, since they're not Activities, and won't be searched for listeners defined in onClick.
 
-Creating a EditText object
+Creating a EditText object(2 ways: from xml or directly in JAVA)
 EditText egt = (EditTexzt)findViewById(R.id.nameText);
 String entry = et.getText().toString(); //Note that et.getText() returns sth called an editableObject (IMP)
 //even for StringBuilder Objects, you have to do .toString() to convert it into string boject
 
+//fromJAVA code
+LinearLayout rootView = (LinearLayout)findViewById(R.id.myLinearLayout);
+TextView wordView = new TextView(this);
+wordView.setText(wordarray.get(0))
+rootView.addView(wordView)
+
+
 It's better to embed a TextView which is very long in a scrollView container
+textView.setText
+textView.setImageResource
+
+
+Adding a Checkbox:
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_hegith="wrap_content"
+    android:textSize="48sp"
 
 To convert a hard-coded string into a resource string:
 just put the cursor in the string and click opt+return.
@@ -96,6 +117,7 @@ Log.d(getClass().getSimpleName(), "onCreate"); //gives the current Class name dy
 //You need to comment out the Log methods when shipped
 Log.e for error
 Log.i for info 
+Log.v("classname", "your message");
 
 Handling changes in Screen Orientation:
 These are automatically handled by the application framework. It simply destructs the entire activity and reconstructs
@@ -104,5 +126,62 @@ everything from scratch when rotated. You can observe this by debugging the life
 2) Handle using onConfigurationChanged method
 
 
+Padding vs Margin:
+Pdding = offset within view (android:padding=) (android:paddingTop)(android:paddingLeft)..
+margin = offset outside the view (android:layout_margin=)
+You can distinguish them only if theere's a bg color difference. Else they look alike
 
 
+Note that vertical layout is not scrollable. You should use a scrollview
+<ScrollView xmlns="copy the xml namespace from somewhere"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    <LinearLayout xmlns="remove this"
+    
+    />
+/>
+
+
+Intent:
+Intent intent = new Intent(Intent.ACTION_VIEW);
+intent.setData(Uri.parse("geo:47.6, -122.3"));
+if(intent.resolveActivity(getPackageManager())!=null) {
+    startActivity(intent);
+    }
+}
+Exlicit intents to navigate within an app(intra-app) (https://developer.android.com/guide/components/intents-filters.html#ExampleExplicit)
+Implicit to navigate inter-apps
+
+
+Styles(https://developer.android.com/guide/topics/ui/themes.html)
+In res->values->styles.xlm
+Defnining:
+<style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#00FF00"
+    android:typeface="monospace"
+    android:text="@string/hello" />
+will now become
+<TextView
+    style="@style/CodeFont"
+    android:text="@string/hello" />
+    
+    
+Whereas a style is applied to a view , A theme is a style applied to an entire Activity or application, rather than an individual View
+
+
+Note: Theme.AppCompat is same as Material except that AppCompat works even on those prior to lollipop
+
+
+/*  Array Adapters  */
+ArrayAdapter<String> myAdapter - new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.textVewID, myitems);
+ListView lv = (ListView) findViewById(R.id.listView)
+lv.setAdapter(myAdapter)
