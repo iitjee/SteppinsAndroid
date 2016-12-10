@@ -1,0 +1,55 @@
+/* PS
+
+LinearLayout: Horizontal Stacking and Vertical Stackng
+Relative Layout: 
+Frame Layout:
+Table Layout:
+
+RelativeLyaouts can also be done using nested linear layouts but that will have negative impact
+
+<TextView
+android:height = "wrap_content"
+android:width = "match_parent"
+/>
+ 
+mdpi = medium dpi devices (1)
+ldpi (0.5)
+hdpi (1.5)
+xhdpi (2)
+
+Padding vs Margin:
+Pdding = offset within view (android:padding=) (android:paddingTop)(android:paddingLeft)..
+margin = offset outside the view (android:layout_margin=)
+You can distinguish them only if theere's a bg color difference. Else they look alike
+
+Layout_gravity vs Gravity:
+<TextView
+android:layout_gravity = "right"
+android:gravity = "center_horizontal|bottom"
+/>
+
+layout_gravity is applied to textview whereas gravity is applied to the text within the view
+*/
+
+
+<LinearLayout
+  android:orientation="vertical"
+  <TextView
+    android:layout_gravity="bottom"
+  />
+</LinearLayout>
+TextView will not be placed at bottom, bcos in a vertical layout if it is placed at bottom,
+there'll be no room for its next views. change the orientation to "horizontal" and it will work
+
+
+
+Weights:
+<LinearLayout
+  <TextView android:layout_weight="1"  />
+  <TextView android:layout_weight="2" />
+
+
+
+
+
+
