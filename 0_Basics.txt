@@ -57,6 +57,7 @@ just put the cursor in the string and click opt+return.
 You get an intention action menu -> Extract String resource
 
 See all errors and warnings in "Problems" view
+Androidmanifest file contains important info: pkgname, appname(android:lable) and all the activities    
 
 To see list of all dependencies, 
 1. Go to Android View -> BuildGradle(Module) or
